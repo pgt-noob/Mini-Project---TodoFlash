@@ -22,9 +22,15 @@
                 <button type="submit" class="submit-btn">Add</button>
             </form>
             <div class="listing-area">
-                <span class="added-terms">
-                    Added words
-                </span>
+                <div class="board-name">
+                    <span class="added-terms">
+                        Added words
+                    </span>
+                    <span class="clear-terms">
+                        Clear
+                    </span>
+                </div>
+                
                 <div class="listing">
                     <div class="title flex-row">
                         <div class="temr-title double-col">
@@ -38,6 +44,49 @@
                     
                 </div>
             </div>
+
+            <div class="open-flipcard">
+                <span>Done already? </span>
+                <button class="openFlip">Proceed to Test</button>
+            </div>
+        </div>
+
+        <div class="flip-container hide">
+            <div class="flip-functions">
+                <div class="flip-view prev">
+                   <span></span>
+                </div>
+                <button class="done next-card">
+                    <span>0</span> 
+                </button>
+                   
+                <button class="pass next-card">
+                    <span>0</span> 
+                </button>
+                <div class="flip-view next">
+                    <span></span>
+                </div>
+            </div>
+            <div class="flip-show">
+                <div class="current">
+                    <div class="front-side">
+                        <span>This is the front side</span>
+                    </div>
+
+                    <div class="back-side">
+                        <span>This is the back side</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="congratulation">
+            <div class="congratulation-inner">
+                <span>Congratulation, you have become smarter</span> 
+                <button class="confirm">CONFIRM</button>
+            </div>
+        </div>
+        <div class="move-back hide">
+            <ion-icon name="chevron-back-outline"></ion-icon>
         </div>
     </div>
     

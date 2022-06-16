@@ -56,7 +56,6 @@ ion-icon{
 
 .content-container{
     padding: 50px;
-    display: flex;
     height: 100%;
 }
 
@@ -82,9 +81,13 @@ ion-icon{
 .work-space{
     width: 100%;
     height: auto;
-
+    transform: translateY(0);
 }
 
+.work-space.out-slide{
+    transform: translateY(-100%);
+    transition: .5s ease-in;
+}
 .adding-area{
     justify-content: space-between;
 }
@@ -105,11 +108,29 @@ ion-icon{
     padding-block: 20px;
 }
 
-.added-terms{
-    border: 1px white solid;
-    display: block;
-    font-size: 18px;
+.board-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
     padding: 5px 8px;
+    font-size: 18px;
+    position: relative;
+}
+
+.clear-terms{
+    cursor: pointer;
+    transition: .2s ease;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    padding: 5px 8px;
+    right: 0;
+}
+
+.clear-terms:hover{
+    background-color: var(--delete);
 }
 
 .listing{
@@ -190,5 +211,202 @@ ion-icon{
 
 .mean{
     border-left: 1px white solid;
+}
 
+.open-flipcard{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.flip-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.flip-functions{
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    max-width: 20%;
+}
+
+.flip-functions button{
+    min-width: 50px;
+    max-width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flip-view{
+    flex: 0 1 30%;
+    cursor: pointer;
+}   
+
+.current{
+    cursor: pointer;
+}
+
+.flip-view *,
+.current *{
+    font-size: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.flip-view *{
+    background-color: white;
+}
+
+.current span{
+    font-size: 40px;
+}
+
+.current{
+    height: 80%;
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: .5s ease all;
+}
+
+.current.flip{
+    transform: rotateY(180deg);
+}
+
+.current > *{
+    position: absolute;
+    inset: 0 0 0 0;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.front-side{
+    background-color: white;
+}
+
+.back-side{
+    background-color: black !important;
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 10;
+}
+
+.flip-show{
+    flex: 1 1;
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.done{
+    background-color: rgb(63, 189, 63);
+}
+
+.pass{
+    background-color: var(--delete);
+}
+
+.disable{
+    opacity: .6 !important;
+    pointer-events: none !important;
+}
+
+.move-back{
+    position: fixed;
+    font-size: 30px;
+    border: 3px white solid;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s ease all;
+    bottom: 20px;
+    right: 20px;
+}
+
+.move-back:hover{
+    background-color: white;
+    color: var(--primary);
+}
+
+.congratulation{
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    display: none;
+}
+
+.congratulation.is-shown{
+    display: flex;
+}
+
+.congratulation.is-shown .congratulation-inner{
+    animation: inner-slide-in .5s ease-in forwards;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes inner-slide-in {
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.congratulation.congrats-close .congratulation-inner{
+    animation: inner-slide-out .5s ease-in forwards;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+@keyframes inner-slide-out {
+    0%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+.congratulation-inner{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    transition: .5s ease all;
+}
+
+.congratulation-inner * {
+    display: block;
+    margin-inline: auto;
+    letter-spacing: 2px;
+}
+
+.congratulation-inner span{
+    margin-bottom: 20px;
+    font-size: 25px;
 }
